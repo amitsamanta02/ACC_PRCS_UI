@@ -1,0 +1,53 @@
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/v4-shims.css">
+</head>
+<div class="header">
+  <h2>Order Management Application Status</h2>
+</div>
+<div class="ui-g ui-fluid">
+<table>
+  <tr>
+    <th>
+        <p-header>From Date: </p-header>
+    </th>
+    <th>
+      <p-calendar [(ngModel)]="formValue" [showIcon]="true" ></p-calendar>
+    </th>
+    <th>
+        <p-header>To Date: </p-header>
+    </th>
+    <th>
+      <p-calendar [(ngModel)]="toValue" [showIcon]="true" ></p-calendar>
+    </th>
+    <th>
+      <button (click) = "onSearch($event)" pButton type="button" label="Search" class="ui-button-rounded ui-button-success"></button>
+    </th>
+    <th>
+      <button (click) = "onreset($event)" pButton type="button" label="Reset" class="ui-button-rounded ui-button-danger"></button>
+    </th>
+  </tr>
+</table>
+</div>
+<div *ngIf="this.products" class="ui-g ui-fluid">
+  <p-table [value]="products" *ngIf = "this.products">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>CustNo</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Edit</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body">
+        <tr *ngFor="let product of this.products | keyvalue">
+            <td>{{product.value.customerNumber}}</td>
+            <td>{{product.value.customerName}}</td>
+            <td>{{product.value.phone}}</td>
+            <td>{{product.value.addressLine1 + " " + product.value.addressLine2}}</td>
+            <td><p-button icon="pi pi-check" iconPos="right" label="Click"></p-button></td>
+        </tr>
+    </ng-template>
+</p-table>
+</div>

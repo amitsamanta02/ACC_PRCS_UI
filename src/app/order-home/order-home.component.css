@@ -1,0 +1,27 @@
+html, body {
+  height:100%;
+  padding:0;
+  margin:0;
+ }
+ body {
+  background:rgb(241, 229, 229);
+  color: #000;
+  vertical-align: top;
+ }
+.header {
+  padding: 1px;
+  text-align: center;
+  background: #00008b;
+  color: white;
+  font-size: 12px;
+  font-family: Arial;
+}
+table {
+  border-collapse:collapse;
+  padding: 10px;
+}
+td {
+  border-style:dotted;
+  border-width:3px;
+  border-color:#000000;
+  }

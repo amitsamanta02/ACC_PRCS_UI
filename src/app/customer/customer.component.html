@@ -1,0 +1,61 @@
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/v4-shims.css">
+</head>
+<div class="header">
+  <h1 class="far fa-address-card" >Customer Profile</h1>
+</div>
+<div>
+  <p-autoComplete [(ngModel)]="typeCustomer" [suggestions]="filteredCustomerSingle"
+        (completeMethod)="filterCustomerSingle($event)" field="customerName" [size]="70"
+         placeholder="Type customer name " [minLength]="1">
+  </p-autoComplete>
+  <button pButton (click) = "onSearch($event)" type="button" label="Search" class="ui-button-rounded"></button>
+  <button pButton type="button" label="Reset" class="ui-button-rounded ui-button-warning"></button>
+</div>
+<div class = "searchdiv" *ngIf="customerdet">
+  <mat-toolbar color="primary" >
+    <span>Details for {{customerdet.contactFirstName + ' ' + customerdet.contactLastName}} : </span>
+  </mat-toolbar>
+</div>
+
+<div *ngIf="customerdet">
+  <p-tabView>
+    <p-tabPanel header="Basic Information" leftIcon="fas fa-address-book">
+        <table>
+          <tr>
+            <th> Account Information</th>
+            <th> Contact Infomation</th>
+          </tr>
+          <tr>
+            <td>
+              Account Detail
+          </td>
+          <td>
+            <p class="texttag"> First Name : {{customerdet.contactFirstName }}</p>
+              <p class="texttag">Last Name: {{customerdet.contactLastName}}</p>
+              <p class="texttag">Address: {{customerdet.addressLine1 +
+                              customerdet.addressLine2}}</p>
+              <p class="texttag">City: {{customerdet.city}} </p>
+              <p class="texttag">PIN Code: {{customerdet.postalCode}}</p>
+              <p class="texttag">Country: {{customerdet.country}}</p>
+              <p class="texttag">Phone No: {{customerdet.phone}}</p>
+              <p class="texttag">Email: {{customerdet.email}}</p>
+          </td>
+          </tr>
+      </table>
+    </p-tabPanel>
+    <p-tabPanel header="Transaction" leftIcon="fas fa-table">
+        Transaction Details
+    </p-tabPanel>
+    <p-tabPanel header=" Invoice" leftIcon="fas fa-file-alt">
+        Invoice.
+    </p-tabPanel>
+    <p-tabPanel header="Account Performance" leftIcon="fas fa-chart-area">
+      Invoice.
+  </p-tabPanel>
+    <p-tabPanel header="Update Details" leftIcon="far fa-edit">
+      Update information.
+  </p-tabPanel>
+  </p-tabView>
+</div>
